@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 from .keyboard import Keyboard
 from ujson import dumps, loads
 

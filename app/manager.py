@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 from app import db
 from .message import BaseMessage, HomeMessage, SuccessMessage, FailMessage
 from .model import User
@@ -12,7 +13,8 @@ class Singleton(type):
         return cls.instance
 
 
-class APIManager(metaclass=Singleton):
+class APIManager():
+    __metaclass__=Singleton
     def process(self, mode, *args):
         try:
             options = {
@@ -83,7 +85,8 @@ class APIManager(metaclass=Singleton):
         return message
 
 
-class MessageManager(metaclass=Singleton):
+class MessageManager():
+    __metaclass__=Singleton
     def get_base_message(self):
         base_message = BaseMessage().get_message()
         return base_message
@@ -101,7 +104,8 @@ class MessageManager(metaclass=Singleton):
         return success_message
 
 
-class DBManager(metaclass=Singleton):
+class DBManager():
+    __metaclass__=Singleton
     def query(self, model, **kwargs):
         return model.query.filter_by(**kwargs).first()
 
